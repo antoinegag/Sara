@@ -3,7 +3,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 
-const API_PORT = 3001;
+var env = process.env.NODE_ENV || 'dev';
+
+const API_PORT = env == 'dev' ? 3001 : 8080;
 const app = express();
 const router = express.Router();
 
