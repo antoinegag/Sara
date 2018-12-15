@@ -1,0 +1,26 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"cd backend && node index.js\" \"cd client && npm start\"",
+    "server": "node backend/index.js",
+    "client" : "cd client && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Poke1650/Sara.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Poke1650/Sara/issues"
+  },
+  "homepage": "https://github.com/Poke1650/Sara#readme",
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  }
+}
