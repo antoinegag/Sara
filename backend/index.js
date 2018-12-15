@@ -13,6 +13,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger("dev"));
 
+app.use( express.static(`${__dirname}/../client/build` ) );
+
 router.get("/", (req, res) => {
     return res.json({ success: true});
 });
