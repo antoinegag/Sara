@@ -1,4 +1,7 @@
 git pull
+echo Installing server packages
 cd backend && npm install
+echo Installing client packages
 cd ../client && npm install
-cd npm run build
+echo Building app
+npm run build
