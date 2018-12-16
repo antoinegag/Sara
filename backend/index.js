@@ -4,8 +4,9 @@ const bodyParser = require("body-parser");
 const logger = require("morgan");
 
 var env = process.env.NODE_ENV || 'dev';
+console.log('Env.: ' + process.env.NODE_ENV);
 
-const API_PORT = env == 'dev' ? 3001 : 8080;
+const API_PORT = (env == 'dev') ? 3001 : 8080;
 const app = express();
 const router = express.Router();
 
