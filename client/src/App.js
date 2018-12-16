@@ -18,8 +18,7 @@ class App extends Component {
     } else {
       return (
         <div>
-          Success: {JSON.stringify(result)}<br />
-          If you see this, the update works.
+          API querry test: {JSON.stringify(result)}<br />
         </div>
       );
     }
