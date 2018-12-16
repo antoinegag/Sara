@@ -1,1 +1,1 @@
-pm2 start backend/index.js --name "sara" --env production
+pm2 start ecosystem.config.js --env production
