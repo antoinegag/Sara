@@ -18,7 +18,8 @@ class App extends Component {
     } else {
       return (
         <div>
-          Success: {JSON.stringify(result)}
+          Success: {JSON.stringify(result)}<br />
+          If you see this, the update works.
         </div>
       );
     }
