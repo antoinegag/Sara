@@ -13,7 +13,7 @@
     "buildClient" : "cd client && npm run build",
     "createPM2" : "pm2 start ecosystem.config.js --env production -f",
     "restartPM2": "pm2 restart sara",
-    "setupDev" : "npm run installBackendDep && npm run installClientDep",
+    "setupDev" : "npm install && npm run installBackendDep && npm run installClientDep",
     "upgrade" : "git pull && npm run installBackendDep && npm run installClientDep && npm run buildClient && npm run restartPM2",
     "deploy" : "npm run installBackendDep && npm run installClientDep && npm run buildClient && npm run createPM2"
   },
