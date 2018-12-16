@@ -7,4 +7,4 @@ echo Building app
 npm run build
 echo Setting env. to production
 export NODE_ENV=production
-echo Done! Run node backend/index.js to start
+echo Done! Run ./startProd.sh to start
