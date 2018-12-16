@@ -15,9 +15,9 @@ To install Sara you will need
 
 ### Installing
 
-First clone the project or your fork with
+First clone the project
 
-`git clone <git_url>`
+`git clone https://github.com/Poke1650/Sara`
 
 After that all you need to do is run
 
@@ -49,6 +49,14 @@ sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\
 You can set the port you wish to usein [ecosystem.config.js](ecosystem.config.js) under `env_production`
 
 ### Install
+Clone the project
+
+`git clone https://github.com/Poke1650/Sara`
+
+This will create a directory called "Sara" with all the code in it.
+
+Go into the Sara directory: `cd Sara`
+
 Run
 
 `npm run deploy`
