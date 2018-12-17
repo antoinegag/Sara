@@ -1,0 +1,23 @@
+{
+    "dev": {
+        "driver": "pg",
+        "user": "postgres",
+        "password": "",
+        "host": "localhost",
+        "database": "sara",
+        "schema": "public"
+    },
+    "prod": {
+        "driver": "pg",
+        "url": {
+            "ENV": "DATABASE_URL"
+        },
+        "schema": "public",
+        "user": {
+            "ENV": "PRODUCTION_USERNAME"
+        },
+        "password": {
+            "ENV": "PRODUCTION_PASSWORD"
+        }
+    }
+}
