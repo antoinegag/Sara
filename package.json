@@ -13,9 +13,11 @@
     "buildClient" : "cd client && npm run build",
     "createPM2" : "pm2 start ecosystem.config.js --env production -f",
     "restartPM2": "pm2 restart ecosystem.config.js",
-    "setupDev" : "npm install && npm run installBackendDep && npm run installClientDep",
-    "upgrade" : "git pull && npm run installBackendDep && npm run installClientDep && npm run buildClient && npm run restartPM2",
-    "deploy" : "npm run installBackendDep && npm run installClientDep && npm run buildClient && npm run createPM2"
+    "migrateDev" : "cd backend && db-migrate up -e dev",
+    "migrateProd" : "cd backend && db-migrate up -e prod",
+    "setupDev" : "npm install && npm run installBackendDep && npm run migrateDev && npm run installClientDep",
+    "upgrade" : "git pull && migrateProd && npm run installBackendDep && npm run installClientDep && npm run buildClient && npm run restartPM2",
+    "deploy" : "source backend/config/prod.env && npm run migrateProd && npm run installBackendDep && npm run installClientDep && npm run buildClient && npm run createPM2"
   },
   "repository": {
     "type": "git",

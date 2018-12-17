@@ -12,12 +12,15 @@ To install Sara you will need
 * Git
 * NodeJS
 * NPM or Yarn
+* PostgreSQL
 
 ### Installing
 
 First clone the project
 
 `git clone https://github.com/Poke1650/Sara`
+
+Create a database on a postgreSQL and edit `backend/database.json` to fit your setup
 
 After that all you need to do is run
 
@@ -40,6 +43,7 @@ To deploy this app on a GNU/Linux server, you will need
 * NodeJS
 * NPM or Yarn
 * PM2
+* PostgreSQL
 
 If you want the app to run on Port 80, make sure that Node has access
 ```bash
@@ -54,6 +58,16 @@ Clone the project
 `git clone https://github.com/Poke1650/Sara`
 
 This will create a directory called "Sara" with all the code in it.
+
+Create a file named `prod.env` in the `config/` directory with the content:
+
+```
+DATABASE_URL=
+PRODUCTION_USERNAME=
+PRODUCTION_PASSWORD=
+```
+
+And fill in the blanks to fit your setup
 
 Go into the Sara directory: `cd Sara`
 
