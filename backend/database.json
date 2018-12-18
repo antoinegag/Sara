@@ -1,23 +1,18 @@
 {
     "dev": {
         "driver": "pg",
-        "user": "postgres",
-        "password": "",
-        "host": "localhost",
-        "database": "sara",
+        "host": { "ENV" : "DEV_HOST" },
+        "user": { "ENV" : "DEV_USERNAME" },
+        "password" : { "ENV" : "PROD_PASSWORD" },
+        "database" : { "ENV" : "DEV_DB" },
         "schema": "public"
     },
     "prod": {
+        "host": { "ENV" : "PROD_HOST" },
+        "user": { "ENV" : "PROD_USERNAME" },
+        "password" : { "ENV" : "PROD_PASSWORD" },
+        "database" : { "ENV" : "PROD_DB" },
         "driver": "pg",
-        "url": {
-            "ENV": "DATABASE_URL"
-        },
-        "schema": "public",
-        "user": {
-            "ENV": "PRODUCTION_USERNAME"
-        },
-        "password": {
-            "ENV": "PRODUCTION_PASSWORD"
-        }
+        "schema": "public"
     }
 }

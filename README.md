@@ -22,6 +22,15 @@ First clone the project
 
 Create a database on a postgreSQL and edit `backend/database.json` to fit your setup
 
+Create a .env file in the backend/ directory with the content
+```env
+DEV_HOST=
+DEV_DB=
+DEV_USERNAME=
+DEV_PASSWORD=
+```
+Fill the blank to fit your needs
+
 After that all you need to do is run
 
 `npm run setupDev`
@@ -59,12 +68,13 @@ Clone the project
 
 This will create a directory called "Sara" with all the code in it.
 
-Create a file named `prod.env` in the `config/` directory with the content:
+Create a file named `.env` in the `backend/` directory with the content:
 
-```
-DATABASE_URL=
-PRODUCTION_USERNAME=
-PRODUCTION_PASSWORD=
+```env
+PROD_HOST=
+PROD_DB=sara
+PROD_USERNAME=
+PROD_PASSWORD=
 ```
 
 And fill in the blanks to fit your setup
