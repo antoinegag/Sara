@@ -15,22 +15,18 @@ if(!port) { //If the port is not defined in env
 }
 
 const app = express();
-const router = express.Router();
+//const router = express.Router();
 
-// (optional) only made for logging and
-// bodyParser, parses the request body to be a readable json format
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger("dev"));
 
 app.use( express.static(`${__dirname}/../client/build` ) );
 
-router.get("/", (req, res) => {
-    return res.json({ success: true});
-});
+const apiRouter = require('./api/index.js');
+app.use("/api", apiRouter);
 
-// append /api for our http requests
-app.use("/api", router);
+//app.use("/api", router);
 
 // launch our backend into a port
 app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
