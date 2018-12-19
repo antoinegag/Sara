@@ -24,10 +24,10 @@ Create a database on a postgreSQL and edit `backend/database.json` to fit your s
 
 Create a .env file in the backend/ directory with the content
 ```env
-DEV_HOST=
-DEV_DB=
-DEV_USERNAME=
-DEV_PASSWORD=
+DB_HOST=
+DB_USERNAME=
+DB_PASSWORD=
+DB_NAME=
 ```
 Fill the blank to fit your needs
 
@@ -71,10 +71,10 @@ This will create a directory called "Sara" with all the code in it.
 Create a file named `.env` in the `backend/` directory with the content:
 
 ```env
-PROD_HOST=
-PROD_DB=sara
-PROD_USERNAME=
-PROD_PASSWORD=
+DB_HOST=
+DB_USERNAME=
+DB_PASSWORD=
+DB_NAME=
 ```
 
 And fill in the blanks to fit your setup

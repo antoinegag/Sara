@@ -1,17 +1,39 @@
 {
     "dev": {
         "driver": "pg",
-        "host": { "ENV" : "DEV_HOST" },
-        "user": { "ENV" : "DEV_USERNAME" },
-        "password" : { "ENV" : "PROD_PASSWORD" },
-        "database" : { "ENV" : "DEV_DB" },
+        "host": {
+            "ENV": "DB_HOST"
+        },
+        "user": {
+            "ENV": "DB_USERNAME"
+        },
+        "password": {
+            "ENV": "DB_PASSWORD"
+        },
+        "database": {
+            "ENV": "DB_NAME"
+        },
+        "port": {
+            "ENV": "DB_PORT"
+        },
         "schema": "public"
     },
     "prod": {
-        "host": { "ENV" : "PROD_HOST" },
-        "user": { "ENV" : "PROD_USERNAME" },
-        "password" : { "ENV" : "PROD_PASSWORD" },
-        "database" : { "ENV" : "PROD_DB" },
+        "host": {
+            "ENV": "DB_HOST"
+        },
+        "user": {
+            "ENV": "DB_USERNAME"
+        },
+        "password": {
+            "ENV": "DB_PASSWORD"
+        },
+        "database": {
+            "ENV": "DB_NAME"
+        },
+        "port": {
+            "ENV": "DB_PORT"
+        },
         "driver": "pg",
         "schema": "public"
     }
