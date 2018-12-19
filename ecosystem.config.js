@@ -3,6 +3,7 @@ module.exports = {
       {
         name: "sara",
         script: "./backend/index.js",
+        max_restarts: 50,
         watch: true,
         env: {
             "PORT": 3000,

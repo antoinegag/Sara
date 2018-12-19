@@ -71,6 +71,10 @@ To use the arduino, make sure to add your production user to the tty group so yo
 
 `sudo usermod -a -G tty <user>`
 
+or
+
+`sudo usermod -a -G dialout <user>` on Debian
+
 ### Install
 Clone the project
 
