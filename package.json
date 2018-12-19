@@ -12,7 +12,7 @@
     "installClientDep" : "cd client && npm install",
     "buildClient" : "cd client && npm run build",
     "createPM2" : "pm2 start ecosystem.config.js --env production -f",
-    "restartPM2": "pm2 restart ecosystem.config.js",
+    "restartPM2": "pm2 restart ecosystem.config.js --env production",
     "migrateDev" : "cd backend && db-migrate up -e dev",
     "migrateProd" : "cd backend && db-migrate up -e prod",
     "setupDev" : "npm install && npm run installBackendDep && npm run migrateDev && npm run installClientDep",
