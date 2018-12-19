@@ -43,6 +43,11 @@ To run the app, go in the root directory and run
 
 Your default browser should open on the app
 
+### Arduino
+To use the arduino, make sure to add your user to the tty group so you can use the port
+
+`sudo usermod -a -G tty <user>`
+
 ## Deployment
 
 ### Prerequisites
@@ -60,6 +65,11 @@ sudo apt-get install libcap2-bin
 sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\
 ```
 You can set the port you wish to usein [ecosystem.config.js](ecosystem.config.js) under `env_production`
+
+### Arduino
+To use the arduino, make sure to add your production user to the tty group so you can use the port
+
+`sudo usermod -a -G tty <user>`
 
 ### Install
 Clone the project

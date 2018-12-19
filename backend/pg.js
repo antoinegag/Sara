@@ -7,7 +7,7 @@ var options = {
 
 var pgp = require('pg-promise')(options);
 
-console.log('Connecting with user: ' + process.env.DB_USERNAME);
+console.log(`Connecting to database with user: ${process.env.DB_USERNAME}`);
 
 var db = pgp({
   host: process.env.DB_HOST,

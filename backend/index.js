@@ -1,5 +1,7 @@
 require('dotenv').config({path: __dirname + '/.env'})
 
+const serial = require('./arduino/serial');
+
 const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -23,8 +25,9 @@ app.use(bodyParser.json());
 app.use(logger("dev"));
 
 app.use( express.static(`${__dirname}/../client/build` ) );
+console.info(`Serving react app from ${__dirname}/../client/build`);
 
 const apiRouter = require('./api/index.js');
 app.use("/api", apiRouter);
 
-app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
+app.listen(API_PORT, () => console.log(`Listening for HTTP request on port ${API_PORT}`));
