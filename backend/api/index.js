@@ -5,7 +5,6 @@ router.get("/", (req, res) => {
   return res.json({ success: true});
 });
 
-const test = require("./test");
-router.use("/test", test);
+router.use("/test", require("./test"));
 
 module.exports = router;
