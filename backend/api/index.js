@@ -5,6 +5,6 @@ router.get("/", (req, res) => {
   return res.json({ success: true});
 });
 
-router.use("/test", require("./test"));
+router.use("/lights", require("./lights"));
 
 module.exports = router;
