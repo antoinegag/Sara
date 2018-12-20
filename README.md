@@ -48,6 +48,10 @@ To use the arduino, make sure to add your user to the tty group so you can use t
 
 `sudo usermod -a -G tty <user>`
 
+or
+
+`sudo usermod -a -G dialout <user>` on Debian (require restart)
+
 ## Deployment
 
 ### Prerequisites
@@ -73,7 +77,7 @@ To use the arduino, make sure to add your production user to the tty group so yo
 
 or
 
-`sudo usermod -a -G dialout <user>` on Debian
+`sudo usermod -a -G dialout <user>` on Debian (require restart)
 
 ### Install
 Clone the project
