@@ -2,24 +2,25 @@ import React, { Component } from "react";
 import { Button, Icon } from "semantic-ui-react"
 import axios from "axios";
 import APIRequestHandler from "../../api/APIRequestHandler";
+import LightAPI from "../../api/lights/LightAPI";
 
 class Remote extends Component {
   render() {
     return (
       <div className="ui one column center aligned grid"> 
-        <Button className="column" icon onClick={() => {APIRequestHandler.query('api/lights/action/toggle')}}>
+        <Button className="column" icon onClick={() => {LightAPI.toggleLights()}}>
           <Icon name='power off' />
         </Button>
-        <Button className="column" icon onClick={() => {APIRequestHandler.query('api/lights/action/ib')}}>
+        <Button className="column" icon onClick={() => {LightAPI.increaseBrightness()}}>
           <Icon name='plus' />
         </Button>
-        <Button className="column" icon onClick={() => {APIRequestHandler.query('api/lights/action/db')}}>
+        <Button className="column" icon onClick={() => {LightAPI.decreaseBrightness()}}>
           <Icon name='minus' />
         </Button> 
-        <Button className="column" icon onClick={() => {APIRequestHandler.query('api/lights/action/w')}}>
+        <Button className="column" icon onClick={() => {LightAPI.setWhite()}}>
             White
         </Button> 
-        <Button className="column" icon onClick={() => {APIRequestHandler.query('api/lights/action/cc')}}>
+        <Button className="column" icon onClick={() => {LightAPI.cycleColor()}}>
             Color
         </Button> 
       </div>

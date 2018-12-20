@@ -5,7 +5,7 @@ class APIRequestHandler {
    * @returns {Promise} Promise with the json object from the response
    */
   static query(url) {
-    return fetch(url).then(res => res.json());
+    return fetch(`/api/${url}`).then(res => res.json());
   }
 
   /**
@@ -15,7 +15,7 @@ class APIRequestHandler {
    * @returns {Promise} Promise with the json object from the response
    */
   static post(url, body) {
-    return fetch(url, { method: "POST", body: JSON.stringify(body) }).then(res => res.json());
+    return fetch(`/api/${url}`, { method: "POST", body: JSON.stringify(body) }).then(res => res.json());
   }
 }
 
