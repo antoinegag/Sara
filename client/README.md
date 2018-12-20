@@ -2,6 +2,9 @@
 
 This is the client app for Sara that interacts with the API
 
+## Color Palette
+https://www.color-hex.com/color-palette/14971
+
 ## Available Scripts
 
 In the project directory, you can run:

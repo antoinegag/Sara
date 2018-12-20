@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Button, Icon } from "semantic-ui-react"
-import axios from "axios";
-import APIRequestHandler from "../../api/APIRequestHandler";
+
 import LightAPI from "../../api/lights/LightAPI";
 
 class Remote extends Component {
