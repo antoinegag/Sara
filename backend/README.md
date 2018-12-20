@@ -5,4 +5,4 @@ This is the web server backend that provides the API for the client as well as i
 Documentation of the API will be added soon.
 
 # Arduino commands
-Arduino commands consist of a single character
+See [sara-arduino](https://github.com/Poke1650/sara-arduino/blob/master/README.md) for a detailed list of commands
