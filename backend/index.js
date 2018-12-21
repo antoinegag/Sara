@@ -1,16 +1,18 @@
 require('dotenv').config({ path: __dirname + '/.env' })
 
-const serial = require('./arduino/serial');
+const serial = require('./arduino/serial'); //Load the serial module
+const db = require('./pg'); //Etablish database connection
 
 const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 
+
 const env = process.env.NODE_ENV || 'dev';
 const port = process.env.PORT;
 
-var API_PORT;
+let API_PORT;
 
 if (!port) { //If the port is not defined in env
     API_PORT = (env == 'dev') ? 3001 : 80;

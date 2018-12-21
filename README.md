@@ -28,6 +28,8 @@ DB_HOST=
 DB_USERNAME=
 DB_PASSWORD=
 DB_NAME=
+
+ARDUINO_PORT= //OPTIONAL (default: /dev/ttyUSB0)
 ```
 Fill the blank to fit your needs
 

@@ -1,15 +1,15 @@
-var SerialPort = require('serialport');
+const SerialPort = require('serialport');
 
-var address = process.env.ARDUINO_PORT || '/dev/ttyUSB0';
-var port = new SerialPort(address)
+const address = process.env.ARDUINO_PORT || '/dev/ttyUSB0';
+const port = new SerialPort(address)
 console.info(`Arduino port set to ${address}`);
 
-var Readline = SerialPort.parsers.Readline; // make instance of Readline parser
-var parser = new Readline(); // make a new parser to read ASCII lines
+const Readline = SerialPort.parsers.Readline; // make instance of Readline parser
+const parser = new Readline(); // make a new parser to read ASCII lines
 port.pipe(parser); // pipe the serial stream to the parser
 
-var ready = false;
-var waitingForData = false;
+let ready = false;
+let waitingForData = false;
 
 /**
  * Queue of requests
@@ -22,20 +22,20 @@ var waitingForData = false;
  * 
  * @see sendCommand
  */
-var queue = []
+let queue = []
 
 /**
  * Handle data input from Arduino
  */
 port.on('data', (data) => {
 
-  let string = data.toString();
+  const string = data.toString();
 
   if (ready) {
     if (waitingForData) {
 
       //Grab the first entry from the queue, resolve the promise and remove it
-      let entry = queue[0];
+      const entry = queue[0];
       entry.resolve(string);
       queue.shift(); //Remove processed entry
       waitingForData = false;
@@ -63,7 +63,7 @@ port.on('data', (data) => {
 function processNext() {
   if (waitingForData || !ready || queue.length == 0) return;
 
-  let entry = queue[0];
+  const entry = queue[0];
   port.write(entry.command);
 
   if (!entry.waitForInput) {
@@ -93,7 +93,7 @@ module.exports = {
     
     let dataResolve = (data) => {return data;}
     
-    let promise = new Promise((resolve, reject) => {
+    const promise = new Promise((resolve, reject) => {
       dataResolve = resolve;
     });
 

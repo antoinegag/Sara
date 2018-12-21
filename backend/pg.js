@@ -1,15 +1,14 @@
-var promise = require('bluebird');
+const promise = require('bluebird');
 
-var options = {
-  // Initialization Options
+const options = {
   promiseLib: promise
 };
 
-var pgp = require('pg-promise')(options);
+const pgp = require('pg-promise')(options);
 
 console.log(`Connecting to database with user: ${process.env.DB_USERNAME}`);
 
-var db = pgp({
+const db = pgp({
   host: process.env.DB_HOST,
   user: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,

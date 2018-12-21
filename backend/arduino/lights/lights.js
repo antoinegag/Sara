@@ -3,7 +3,7 @@ const cmd = require('./../commands');
 
 module.exports = {
   setWhite: () => {
-    return serial.sendCommand(cmd.COLOR_WHITE.command);
+    return serial.sendCommand(cmd.COLOR_WHITE);
   },
   increaseBrightness: () => {
     return serial.sendCommand(cmd.INCREASE_BRIGHTNESS);
