@@ -17,13 +17,14 @@ router.get("/action", (req, res) => {
 
 router.get("/action/:action", (req, res) => {
   let action = req.params.action;
-  let todo = actions[action];
-  if (!todo) {
+  let call = actions[action];
+  if (!call) {
     res.status(400);
     res.json({ Error: `Unknown action ${action}` });
   }
-  todo();
-  res.json({Success: true});
+  call().then(() => {
+    res.json({ success: true });
+  });
 });
 
 module.exports = router;

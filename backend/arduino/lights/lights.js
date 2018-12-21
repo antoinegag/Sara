@@ -1,20 +1,20 @@
 const serial = require('../serial');
-const commands = require('./commands');
+const cmd = require('./../commands');
 
 module.exports = {
   setWhite: () => {
-    serial.sendCommand(commands.COLOR_WHITE);
+    return serial.sendCommand(cmd.COLOR_WHITE.command);
   },
   increaseBrightness: () => {
-    serial.sendCommand(commands.INCREASE_BRIGHTNESS);
+    return serial.sendCommand(cmd.INCREASE_BRIGHTNESS);
   },
   decreaseBrightness: () => {
-    serial.sendCommand(commands.DECREASE_BRIGHTNESS);
+    return serial.sendCommand(cmd.DECREASE_BRIGHTNESS);
   },
   toggleLights: () => {
-    serial.sendCommand(commands.TOGGLE_LIGHTS);
+    return serial.sendCommand(cmd.TOGGLE_LIGHTS);
   },
-  cycleColor: () =>  {
-    serial.sendCommand(commands.COLOR_CYCLE);
+  cycleColor: () => {
+    return serial.sendCommand(cmd.COLOR_CYCLE);
   }
 }

@@ -1,4 +1,4 @@
-require('dotenv').config({path: __dirname + '/.env'})
+require('dotenv').config({ path: __dirname + '/.env' })
 
 const serial = require('./arduino/serial');
 
@@ -12,7 +12,7 @@ const port = process.env.PORT;
 
 var API_PORT;
 
-if(!port) { //If the port is not defined in env
+if (!port) { //If the port is not defined in env
     API_PORT = (env == 'dev') ? 3001 : 80;
 } else {
     API_PORT = port;
@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger("dev"));
 
-app.use( express.static(`${__dirname}/../client/build` ) );
+app.use(express.static(`${__dirname}/../client/build`));
 console.info(`Serving react app from ${__dirname}/../client/build`);
 
 const apiRouter = require('./api/index.js');

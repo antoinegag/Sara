@@ -15,14 +15,12 @@ var waitingForData = false;
  * Queue of requests
  * Example object
  * {
- *  command: <char>, //Command to send to the arduino
- *  waitForInput: <boolean>, //If should wait for input before calling the callback
- *  callback: <function> //Function called after the command is sent,
- *                       //if waitForInput is set to true, the callback will contain
- *                       //the response of the arduino
+ *  command: <char>,          //Command to send to the arduino
+ *  waitForInput: <boolean>,  //If should wait for input before calling the callback
+ *  dataResolve: <function>   //Function called to resolve the promise
  * }
  * 
- * @see addToQueue
+ * @see sendCommand
  */
 var queue = []
 
@@ -36,12 +34,9 @@ port.on('data', (data) => {
   if (ready) {
     if (waitingForData) {
 
-      //Grab the first entry from the queue, call the callback and remove it
+      //Grab the first entry from the queue, resolve the promise and remove it
       let entry = queue[0];
-      if (entry.callback && typeof entry.callback == "function") {
-        entry.callback(string);
-      }
-
+      entry.resolve(string);
       queue.shift(); //Remove processed entry
       waitingForData = false;
       processNext();
@@ -72,9 +67,7 @@ function processNext() {
   port.write(entry.command);
 
   if (!entry.waitForInput) {
-    if (entry.callback && typeof entry.callback == "function") {
-      entry.callback();
-    }
+    entry.resolve();
     queue.shift(); //Remove processed entry
   } else {
     waitingForData = true;
@@ -87,24 +80,31 @@ function processNext() {
 port.on('error', (err) => {
   console.error('Serial port error');
   console.error(`Error: ${err}`);
-  process.exit(1);
+  process.exit(1); //TODO: Properly handle errors
 });
 
 module.exports = {
   /**
    * Send a command to the arduino
    * @param {string} command The command to send to the Arduino
-   * @param {boolean} [waitForInput=true] Indicate if we should wait for input from the Arduino after running the command
-   * @param {function} [callback] Function called after the method is sent to the Arduino, if waitForInput is set to true the data will be the first parameters in the callback 
+   * @param {boolean} [waitForInput=false] Indicate if we should wait for input from the Arduino after running the command
    */
-  sendCommand: (command, waitForInput = false, callback) => {
+  sendCommand: (command, waitForInput = false) => {
+    
+    let dataResolve = (data) => {return data;}
+    
+    let promise = new Promise((resolve, reject) => {
+      dataResolve = resolve;
+    });
+
     queue.push({
       command: command,
       waitForInput: waitForInput,
-      callback: callback
+      resolve: dataResolve
     });
     processNext();
+    return promise;
   },
 
-  isOpen: () => { return port.isOpen }
+  isReady: () => { return ready }
 }
