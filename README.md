@@ -1,6 +1,6 @@
-# Sara
+# Sara &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Smart Assistant and Room Automation
+![](client/public/icon.png) Smart Assistant and Room Automation
 
 ## Getting Started
 
