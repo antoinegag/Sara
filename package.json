@@ -7,17 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently \"cd backend && node index.js\" \"cd client && npm start\"",
     "server": "node backend/index.js",
-    "client" : "cd client && npm start",
-    "installBackendDep" : "cd backend && npm install",
-    "installClientDep" : "cd client && npm install",
-    "buildClient" : "cd client && npm run build",
-    "createPM2" : "pm2 start ecosystem.config.js --env production -f",
+    "client": "cd client && npm start",
+    "installBackendDep": "cd backend && npm install",
+    "installClientDep": "cd client && npm install",
+    "buildClient": "cd client && npm run build",
+    "createPM2": "pm2 start ecosystem.config.js --env production -f",
     "restartPM2": "pm2 restart ecosystem.config.js --env production",
-    "migrateDev" : "cd backend && db-migrate up -e dev",
-    "migrateProd" : "cd backend && db-migrate up -e prod",
-    "setupDev" : "npm install && npm run installBackendDep && npm run migrateDev && npm run installClientDep",
-    "upgrade" : "git pull && npm run installBackendDep && npm run migrateProd && npm run installClientDep && npm run buildClient && npm run restartPM2",
-    "deploy" : "git pull && npm run migrateProd && npm run installBackendDep && npm run installClientDep && npm run buildClient && npm run createPM2"
+    "migrateDev": "cd backend && db-migrate up -e dev",
+    "migrateProd": "cd backend && db-migrate up -e prod",
+    "setupDev": "npm install && npm run installBackendDep && npm run migrateDev && npm run installClientDep",
+    "upgrade": "git pull && npm run installBackendDep && npm run migrateProd && npm run installClientDep && npm run buildClient && npm run restartPM2",
+    "deploy": "git pull && npm run migrateProd && npm run installBackendDep && npm run installClientDep && npm run buildClient && npm run createPM2"
   },
   "repository": {
     "type": "git",
@@ -30,7 +30,7 @@
     "url": "https://github.com/Poke1650/Sara/issues"
   },
   "homepage": "https://github.com/Poke1650/Sara#readme",
-  "dependencies": {
+  "devDependencies": {
     "concurrently": "^4.1.0"
   }
 }
