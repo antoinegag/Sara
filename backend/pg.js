@@ -1,7 +1,7 @@
 const promise = require('bluebird');
 
 const options = {
-  promiseLib: promise
+  promiseLib: promise,
 };
 
 const pgp = require('pg-promise')(options);
@@ -13,7 +13,7 @@ const db = pgp({
   user: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  port: process.env.DB_PORT
+  port: process.env.DB_PORT,
 });
 
 module.exports = db;

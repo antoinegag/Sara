@@ -1,10 +1,10 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
-const tempSensor = require("../../arduino/sensors/atmospheric/temperature");
+const tempSensor = require('../../arduino/sensors/atmospheric/temperature');
 
-router.get("/", async (req, res) => {
-  let temp = await tempSensor.getTemperature();
+router.get('/', async (req, res) => {
+  const temp = await tempSensor.getTemperature();
   return res.json({temperature: temp});
 });
 

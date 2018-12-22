@@ -5,7 +5,7 @@ module.exports = {
 
   /**
    * Get the current temperature
-   * @returns {Promise} Promise with the temperature in degree C as a string
+   * @return {Promise} Promise with the temperature in degree C as a string
    */
   getRawTemperature() {
     return serial.sendCommand(cmd.GET_TEMP, true);
@@ -13,9 +13,11 @@ module.exports = {
 
   /**
    * Get the current temperature
-   * @returns {Promise} Promise with the temperature in degree C as a float
+   * @return {Promise} Promise with the temperature in degree C as a float
    */
   getTemperature() {
-    return this.getRawTemperature().then(val => { return parseFloat(val) });
-  }
-}
+    return this.getRawTemperature().then((val) => {
+      return parseFloat(val);
+    });
+  },
+};

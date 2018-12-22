@@ -1,11 +1,11 @@
 const SerialPort = require('serialport');
-const Delimiter = require('@serialport/parser-delimiter')
+const Delimiter = require('@serialport/parser-delimiter');
 
 const address = process.env.ARDUINO_PORT || '/dev/ttyUSB0';
-const port = new SerialPort(address)
+const port = new SerialPort(address);
 console.info(`Arduino port set to ${address}`);
 
-const parser = port.pipe(new Delimiter({ delimiter: '\r\n' }))
+const parser = port.pipe(new Delimiter({delimiter: '\r\n'}));
 
 let ready = false;
 let waitingForData = false;
@@ -15,22 +15,22 @@ let waitingForData = false;
  * Example object
  * {
  *  command: <char>,          //Command to send to the arduino
- *  waitForInput: <boolean>,  //If should wait for input before calling the callback
+ *  waitForInput: <boolean>,  //If should wait for input
  *  dataResolve: <function>   //Function called to resolve the promise
  * }
- * 
+ *
  * @see sendCommand
  */
-let queue = []
+const queue = [];
 
 /**
  * Handle data input from Arduino
  */
 parser.on('data', (data) => {
-  let string = data.toString();
+  const string = data.toString();
   if (ready) {
-    if(waitingForData) {
-      let entry = queue[0];
+    if (waitingForData) {
+      const entry = queue[0];
       entry.resolve(string);
       waitingForData = false;
       queue.shift();
@@ -53,16 +53,16 @@ parser.on('data', (data) => {
  * Process the next command in queue
  */
 function processNext() {
-  if(!ready || waitingForData || queue.length == 0) return;
+  if (!ready || waitingForData || queue.length == 0) return;
 
-  let entry = queue[0];
+  const entry = queue[0];
 
-  if(entry.waitForInput) {
+  if (entry.waitForInput) {
     waitingForData = true;
     port.write(entry.command);
   } else {
     port.write(entry.command);
-    queue.shift(); //Remove processed entry
+    queue.shift(); // Remove processed entry
     entry.resolve();
     processNext();
   }
@@ -74,18 +74,21 @@ function processNext() {
 port.on('error', (err) => {
   console.error('Serial port error');
   console.error(`Error: ${err}`);
-  //process.exit(1); //TODO: Properly handle errors
+  // process.exit(1); //TODO: Properly handle errors
 });
 
 module.exports = {
   /**
    * Send a command to the arduino
    * @param {string} command The command to send to the Arduino
-   * @param {boolean} [waitForInput=false] Indicate if we should wait for input from the Arduino after running the command
+   * @param {boolean} [waitForInput=false]
+   * @return {Promise}
    */
   sendCommand: (command, waitForInput = false) => {
-    let dataResolve = (data) => {return data;}
-  
+    let dataResolve = (data) => {
+      return data;
+    };
+
     const promise = new Promise((resolve, reject) => {
       dataResolve = resolve;
     });
@@ -93,13 +96,15 @@ module.exports = {
     queue.push({
       command: command,
       waitForInput: waitForInput,
-      resolve: dataResolve
+      resolve: dataResolve,
     });
 
     processNext();
     return promise;
   },
 
-  isReady: () => { return ready },
-  port: port
-}
+  isReady: () => {
+    return ready;
+  },
+  port: port,
+};

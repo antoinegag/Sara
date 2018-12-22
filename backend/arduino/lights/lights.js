@@ -16,5 +16,5 @@ module.exports = {
   },
   cycleColor: () => {
     return serial.sendCommand(cmd.COLOR_CYCLE);
-  }
-}
+  },
+};
