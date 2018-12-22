@@ -2,6 +2,9 @@
 
 ![](client/public/icon.png) Smart Assistant and Room Automation
 
+## Warning
+This is still in **beta**, this README (and all other READMEs) are bound to change and might be outdated
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
