@@ -74,7 +74,7 @@ function processNext() {
 port.on('error', (err) => {
   console.error('Serial port error');
   console.error(`Error: ${err}`);
-  process.exit(1); //TODO: Properly handle errors
+  //process.exit(1); //TODO: Properly handle errors
 });
 
 module.exports = {

@@ -26,10 +26,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger("dev"));
 
-app.use(express.static(`${__dirname}/../client/build`));
-console.info(`Serving react app from ${__dirname}/../client/build`);
-
 const apiRouter = require('./api/index.js');
 app.use("/api", apiRouter);
+
+//Point everything else to React, this allows us to use react routers
+app.get('*', (req,res) =>{
+    res.sendFile(path.join(__dirname+'/../client/build/index.html'));
+});
+
 
 app.listen(API_PORT, () => console.log(`Listening for HTTP request on port ${API_PORT}`));
