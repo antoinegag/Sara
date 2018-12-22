@@ -1,12 +1,11 @@
 const SerialPort = require('serialport');
+const Delimiter = require('@serialport/parser-delimiter')
 
 const address = process.env.ARDUINO_PORT || '/dev/ttyUSB0';
 const port = new SerialPort(address)
 console.info(`Arduino port set to ${address}`);
 
-const Readline = SerialPort.parsers.Readline; // make instance of Readline parser
-const parser = new Readline(); // make a new parser to read ASCII lines
-port.pipe(parser); // pipe the serial stream to the parser
+const parser = port.pipe(new Delimiter({ delimiter: '\r\n' }))
 
 let ready = false;
 let waitingForData = false;
@@ -27,50 +26,45 @@ let queue = []
 /**
  * Handle data input from Arduino
  */
-port.on('data', (data) => {
-
-  const string = data.toString();
-
+parser.on('data', (data) => {
+  let string = data.toString();
   if (ready) {
-    if (waitingForData) {
-
-      //Grab the first entry from the queue, resolve the promise and remove it
-      const entry = queue[0];
+    if(waitingForData) {
+      let entry = queue[0];
       entry.resolve(string);
-      queue.shift(); //Remove processed entry
       waitingForData = false;
+      queue.shift();
       processNext();
-
     } else {
-      console.warn(`Got unexpected data from Arduino: ${string}`);
+      console.warn(`${new Date()} - Got unexpected data: ${string} (ignored)`);
     }
   } else {
-    if (string === 'READY') {
+    if (string == 'READY') {
       ready = true;
       console.info(`Arduino @ ${address} ready`);
       processNext();
+    } else {
+      console.warn(`Received data "${string}" but Arduino is not ready`);
     }
   }
 });
 
 /**
  * Process the next command in queue
- * Unless:
- *  -We are waiting for input from the Arduino
- *  -Connection with the Arduino hasn't been made yet
- *  -There are no entry to process 
  */
 function processNext() {
-  if (waitingForData || !ready || queue.length == 0) return;
+  if(!ready || waitingForData || queue.length == 0) return;
 
-  const entry = queue[0];
-  port.write(entry.command);
+  let entry = queue[0];
 
-  if (!entry.waitForInput) {
-    entry.resolve();
-    queue.shift(); //Remove processed entry
-  } else {
+  if(entry.waitForInput) {
     waitingForData = true;
+    port.write(entry.command);
+  } else {
+    port.write(entry.command);
+    queue.shift(); //Remove processed entry
+    entry.resolve();
+    processNext();
   }
 }
 
@@ -90,9 +84,8 @@ module.exports = {
    * @param {boolean} [waitForInput=false] Indicate if we should wait for input from the Arduino after running the command
    */
   sendCommand: (command, waitForInput = false) => {
-    
     let dataResolve = (data) => {return data;}
-    
+  
     const promise = new Promise((resolve, reject) => {
       dataResolve = resolve;
     });
@@ -102,9 +95,11 @@ module.exports = {
       waitForInput: waitForInput,
       resolve: dataResolve
     });
+
     processNext();
     return promise;
   },
 
-  isReady: () => { return ready }
+  isReady: () => { return ready },
+  port: port
 }

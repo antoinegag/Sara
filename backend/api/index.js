@@ -5,6 +5,9 @@ router.get("/", (req, res) => {
   return res.json({ success: true});
 });
 
-router.use("/lights", require("./lights"));
+const sensors = require("./sensors");
+const lights = require("./lights");
+router.use("/lights", lights);
+router.use("/sensors", sensors);
 
 module.exports = router;
