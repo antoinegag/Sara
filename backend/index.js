@@ -27,6 +27,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger("dev"));
 
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, '/../client/build')));
+
 const apiRouter = require('./api/index.js');
 app.use("/api", apiRouter);
 
@@ -34,6 +37,5 @@ app.use("/api", apiRouter);
 app.get('*', (req,res) =>{
     res.sendFile(path.join(__dirname+'/../client/build/index.html'));
 });
-
 
 app.listen(API_PORT, () => console.log(`Listening for HTTP request on port ${API_PORT}`));
