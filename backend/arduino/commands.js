@@ -9,4 +9,5 @@ module.exports = {
 
   // Sensor data
   GET_TEMP: 'T',
+  GET_LIGHT_LEVEL: 'L',
 };
