@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Icon, Divider, Container } from "semantic-ui-react"
+import { Button, Icon } from "semantic-ui-react"
 
 import LightAPI from "../../api/lights/LightAPI";
 
