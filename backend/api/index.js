@@ -7,7 +7,9 @@ router.get('/', (req, res) => {
 
 const sensors = require('./sensors');
 const lights = require('./lights');
+const system = require('./system');
 router.use('/lights', lights);
 router.use('/sensors', sensors);
+router.use('/system', system);
 
 module.exports = router;

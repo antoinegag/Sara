@@ -32,5 +32,6 @@
   "homepage": "https://github.com/Poke1650/Sara#readme",
   "devDependencies": {
     "concurrently": "^4.1.0"
-  }
+  },
+  "dependencies": {}
 }
