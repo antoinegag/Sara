@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 
-import Temperature from '../components/Temperature';
 import Greeting from '../components/misc/Greeting';
-import { Icon } from 'semantic-ui-react';
+import { Divider, Header, Icon } from 'semantic-ui-react';
+import RoomData from '../components/RoomData';
 
 class Home extends Component {
   render() {
     return (
-    <div>
-      <h1><Greeting /></h1>
-      <Icon name="thermometer"/><Temperature/>
-    </div>
+      <div>
+        <h1><Greeting /></h1>
+        <Divider hidden/>
+        <Divider horizontal>
+          <Header as='h4'>
+            <Icon name='home' />
+            Your house
+          </Header>
+        </Divider>
+        <RoomData name="Antoine's room"/>
+        <Divider hidden/>
+      </div>
     );
   }
 }

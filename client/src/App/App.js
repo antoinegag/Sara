@@ -4,6 +4,7 @@ import './App.css';
 import Home from './pages/Home';
 import NavBar from './components/nav/NavBar';
 import { Container } from 'semantic-ui-react';
+import Remote from './components/remote/Remote';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
         <Container className='main'>
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route exact path='/remote' component={Remote} />
           </Switch>
         </Container>
       </div>

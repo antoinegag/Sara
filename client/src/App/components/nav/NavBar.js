@@ -13,8 +13,8 @@ export default class NavBar extends React.Component {
     return (
       <Menu inverted attached>
         <Menu.Item as={Link} to='/' header>
-          <Image size='mini' src='/icon.png' style={{ marginRight: '1.5em' }} /> Sara
-          </Menu.Item>
+          <Image size='mini' src='/icon.png' style={{ marginRight: '1.5em' }} /> Home
+        </Menu.Item>
         <Menu.Item as={Link} to='/remote'><Icon name="lightbulb outline" />Remote</Menu.Item>
         <Menu.Item as={Link} to='/dashboard'><Icon name="dashboard" />Dashboard</Menu.Item>
       </Menu>
