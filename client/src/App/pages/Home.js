@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import NavBar from '../components/nav/NavBar';
+import { Header } from 'semantic-ui-react';
 
 class Home extends Component {
   render() {
     return (
-    <div className="App">
-      <h1>Project Home</h1>
+    <div>
+      <h1>Welcome home</h1>
     </div>
     );
   }
