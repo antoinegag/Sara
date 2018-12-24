@@ -10,7 +10,7 @@ const path = os.platform() === 'win32' ? 'c:' : '/';
  */
 function getDiskInfo() {
   const info = disk.checkSync(path);
-
+  
   return {
     path: path,
     available: info.available,

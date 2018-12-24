@@ -30,6 +30,8 @@ export default class SystemData extends Component {
     } else {
       //TODO: split that stuff into multiple components
       let { arduino, server, process, database } = data;
+      const disk = server.disk;
+
       const platformIcon = {
         "Linux" : "linux",
         "Darwin" : "apple",
@@ -74,6 +76,14 @@ export default class SystemData extends Component {
             <List.Item>
               <List.Icon name="clock" />
               <List.Content>Uptime: {server.uptime}</List.Content>
+            </List.Item>
+            <List.Item>
+              <List.Icon name="hdd" />
+              <List.Content>{disk.path}</List.Content>
+              <List>
+                <List.Item>Available: {disk.available_f}</List.Item>
+                <List.Item>Total: {disk.total_f}</List.Item>
+              </List>
             </List.Item>
           </List>
           <Divider horizontal>
