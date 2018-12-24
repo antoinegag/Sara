@@ -51,6 +51,24 @@ function parserHandler() {
       }
     }
   });
+
+  /**
+ * Handle serial port related errors
+ */
+  port.on('error', (err) => {
+    console.error('Serial port error');
+    console.error(`Error: ${err}`);
+  // process.exit(1); //TODO: Properly handle errors
+  });
+
+  port.on('close', (data) => {
+    ready = false;
+    console.info(`Disconnected from ${address}`);
+  });
+
+  port.on('open', (data) => {
+    console.info(`Opened ${address}`);
+  });
 };
 
 
@@ -96,7 +114,6 @@ function connect() {
 function disconnect() {
   port.close();
   ready = false;
-  console.info(`Disconnected from ${address}`);
 }
 
 /**
@@ -106,15 +123,6 @@ function reset() {
   disconnect();
   connect();
 }
-
-/**
- * Handle serial port related errors
- */
-port.on('error', (err) => {
-  console.error('Serial port error');
-  console.error(`Error: ${err}`);
-  // process.exit(1); //TODO: Properly handle errors
-});
 
 module.exports = {
   /**
