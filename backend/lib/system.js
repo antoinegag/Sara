@@ -1,5 +1,26 @@
 const time = require('./time');
 const os = require('os');
+const disk = require('diskusage');
+const prettyBytes = require('pretty-bytes');
+
+const path = os.platform() === 'win32' ? 'c:' : '/';
+
+/**
+ * @return {JSON} Disk info for / or c:
+ */
+function getDiskInfo() {
+  const info = disk.checkSync(path);
+
+  return {
+    path: path,
+    available: info.available,
+    available_f: prettyBytes(info.available),
+    free: info.free,
+    free_f: prettyBytes(info.free),
+    total: info.total,
+    total_f: prettyBytes(info.total),
+  };
+}
 
 /**
  * @return {String} process uptime formated as a human readable string
@@ -40,6 +61,7 @@ function getServerInfo() {
     platform: os.platform(),
     type: os.type(),
     release: os.release(),
+    disk: getDiskInfo(),
   };
 }
 
