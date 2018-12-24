@@ -10,7 +10,7 @@ const path = os.platform() === 'win32' ? 'c:' : '/';
  */
 function getDiskInfo() {
   const info = disk.checkSync(path);
-  
+
   return {
     path: path,
     available: info.available,
@@ -19,6 +19,18 @@ function getDiskInfo() {
     free_f: prettyBytes(info.free),
     total: info.total,
     total_f: prettyBytes(info.total),
+  };
+}
+
+/**
+ * @return {JSON} memory info
+ */
+function getMemoryInfo() {
+  return {
+    free_mem: os.freemem(),
+    free_mem_f: prettyBytes(os.freemem()),
+    total_mem: os.totalmem(),
+    total_mem_f: prettyBytes(os.totalmem()),
   };
 }
 
@@ -62,6 +74,7 @@ function getServerInfo() {
     type: os.type(),
     release: os.release(),
     disk: getDiskInfo(),
+    memory: getMemoryInfo(),
   };
 }
 

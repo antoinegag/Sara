@@ -31,6 +31,7 @@ export default class SystemData extends Component {
       //TODO: split that stuff into multiple components
       let { arduino, server, process, database } = data;
       const disk = server.disk;
+      const memory = server.memory;
 
       const platformIcon = {
         "Linux" : "linux",
@@ -78,6 +79,14 @@ export default class SystemData extends Component {
               <List.Content>Uptime: {server.uptime}</List.Content>
             </List.Item>
             <List.Item>
+              <List.Icon name="ticket alternate" />
+              <List.Content>Memory</List.Content>
+              <List>
+                <List.Item>Free: {memory.free_mem_f}</List.Item>
+                <List.Item>Total: {memory.total_mem_f}</List.Item>
+              </List>
+            </List.Item>
+            <List.Item>
               <List.Icon name="hdd" />
               <List.Content>{disk.path}</List.Content>
               <List>
@@ -88,7 +97,7 @@ export default class SystemData extends Component {
           </List>
           <Divider horizontal>
             <Header as='h4'>
-              <Icon name='cog' />Process
+              <Icon name='cogs' />Process
             </Header>
           </Divider>
           <List>
