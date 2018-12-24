@@ -13,16 +13,15 @@ router.get('/', async (req, res) => {
         arduino: {
           online: arduino.isReady(),
         },
-        uptime: {
-          process_uptime: system.getFormattedProcessUptime(),
-          server_uptime: system.getFormattedServerUptime(),
-        },
+        server: system.getServerInfo(),
+        process: system.getProcessInfo(),
         database: databaseStatus,
       }
   );
 });
 
-router.use('/uptime', require('./uptime'));
+router.use('/server', require('./server'));
+router.use('/process', require('./process'));
 router.use('/arduino', require('./arduino'));
 router.use('/database', require('./database'));
 

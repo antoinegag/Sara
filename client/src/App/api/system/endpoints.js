@@ -1,6 +1,7 @@
 export default {
   ALL: `system`,
-  UPTIME: `system/uptime`,
+  PROCESS: `system/process`,
+  SERVER: `system/server`,
   ARDUINO: `system/arduino`,
   DATABASE: `system/database`
 }

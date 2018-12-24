@@ -15,7 +15,7 @@ class Dashboard extends Component {
         </Divider>
         <Divider horizontal>
           <Header as='h3'>
-            <Icon name='wrench' />
+            <Icon name='keyboard outline' />
             System
           </Header>
         </Divider>

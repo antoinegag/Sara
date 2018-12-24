@@ -28,7 +28,7 @@ export default class SystemData extends Component {
     } else if (!isLoaded) {
       return <span>Loading system data...</span>;
     } else {
-      const { arduino, uptime, database } = data;
+      const { arduino, server, process, database } = data;
       return (
         <div>
           <Divider horizontal>
@@ -44,17 +44,24 @@ export default class SystemData extends Component {
           </List>
           <Divider horizontal>
             <Header as='h4'>
-              <Icon name='clock' />Uptime
+              <Icon name='server' />Server
             </Header>
           </Divider>
           <List>
             <List.Item>
-              <List.Icon name="terminal" />
-              <List.Content>Process: {uptime.process_uptime}</List.Content>
+              <List.Icon name="clock" />
+              <List.Content>Uptime: {server.uptime}</List.Content>
             </List.Item>
+          </List>
+          <Divider horizontal>
+            <Header as='h4'>
+              <Icon name='wrench' />Process
+            </Header>
+          </Divider>
+          <List>
             <List.Item>
-              <List.Icon name="server" />
-              <List.Content>Server: {uptime.server_uptime}</List.Content>
+              <List.Icon name="clock" />
+              <List.Content>Uptime: {process.uptime}</List.Content>
             </List.Item>
           </List>
           <Divider horizontal>

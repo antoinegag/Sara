@@ -10,8 +10,12 @@ export default class SystemAPI {
     return APIRequestHandler.query(endpoints.ARDUINO);
   }
 
-  static getUptime() {
-    return APIRequestHandler.query(endpoints.UPTIME);
+  static getServer() {
+    return APIRequestHandler.query(endpoints.SERVER);
+  }
+
+  static getProcess() {
+    return APIRequestHandler.query(endpoints.PROCESS);
   }
 
   static getDatabase() {
