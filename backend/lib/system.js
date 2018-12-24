@@ -35,6 +35,11 @@ function getFormattedServerUptime() {
 function getServerInfo() {
   return {
     uptime: getFormattedServerUptime(),
+    arch: os.arch(),
+    hostname: os.hostname(),
+    platform: os.platform(),
+    type: os.type(),
+    release: os.release(),
   };
 }
 
@@ -44,6 +49,7 @@ function getServerInfo() {
 function getProcessInfo() {
   return {
     uptime: getFormattedProcessUptime(),
+    node_version: process.version,
   };
 }
 

@@ -28,7 +28,18 @@ export default class SystemData extends Component {
     } else if (!isLoaded) {
       return <span>Loading system data...</span>;
     } else {
-      const { arduino, server, process, database } = data;
+      //TODO: split that stuff into multiple components
+      let { arduino, server, process, database } = data;
+      const platformIcon = {
+        "Linux" : "linux",
+        "Darwin" : "apple",
+        "Windows_NT": "windows"
+      }
+
+      if(server.platform === "linux") {
+        server.platform = "GNU/Linux";
+      }
+
       return (
         <div>
           <Divider horizontal>
@@ -49,19 +60,35 @@ export default class SystemData extends Component {
           </Divider>
           <List>
             <List.Item>
+              <List.Icon name="at" />
+              <List.Content>{server.hostname}</List.Content>
+            </List.Item>
+            <List.Item>
+              <List.Icon name={platformIcon[server.type]} />
+              <List.Content>{server.platform} {server.release}</List.Content>
+            </List.Item>
+            <List.Item>
+              <List.Icon name="microchip" />
+              <List.Content>Arch: {server.arch}</List.Content>
+            </List.Item>
+            <List.Item>
               <List.Icon name="clock" />
               <List.Content>Uptime: {server.uptime}</List.Content>
             </List.Item>
           </List>
           <Divider horizontal>
             <Header as='h4'>
-              <Icon name='wrench' />Process
+              <Icon name='cog' />Process
             </Header>
           </Divider>
           <List>
             <List.Item>
               <List.Icon name="clock" />
               <List.Content>Uptime: {process.uptime}</List.Content>
+            </List.Item>
+            <List.Item>
+              <List.Icon name="archive" />
+              <List.Content>Node version: {process.node_version}</List.Content>
             </List.Item>
           </List>
           <Divider horizontal>
