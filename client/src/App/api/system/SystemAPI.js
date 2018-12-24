@@ -21,4 +21,16 @@ export default class SystemAPI {
   static getDatabase() {
     return APIRequestHandler.query(endpoints.DATABASE);
   }
+
+  static disconnectArduino() {
+    return APIRequestHandler.post(endpoints.ARDUINO_DISCONNECT);
+  }
+
+  static connectArduino() {
+    return APIRequestHandler.post(endpoints.ARDUINO_CONNECT);
+  }
+
+  static reconnectArduino() {
+    return APIRequestHandler.post(endpoints.ARDUINO_RECONNECT);
+  }
 }

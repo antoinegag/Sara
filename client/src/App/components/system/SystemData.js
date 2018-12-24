@@ -9,7 +9,7 @@ export default class SystemData extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      data: null,
+      data: null
     };
   }
 
@@ -34,12 +34,12 @@ export default class SystemData extends Component {
       const memory = server.memory;
 
       const platformIcon = {
-        "Linux" : "linux",
-        "Darwin" : "apple",
+        "Linux": "linux",
+        "Darwin": "apple",
         "Windows_NT": "windows"
       }
 
-      if(server.platform === "linux") {
+      if (server.platform === "linux") {
         server.platform = "GNU/Linux";
       }
 
@@ -53,7 +53,12 @@ export default class SystemData extends Component {
           <List>
             <List.Item>
               <List.Icon name="power" />
-              <List.Content className={arduino.online ? "On" : "Off"}>{arduino.online ? "Online" : "Offline"}</List.Content>
+              <List.Content>
+                <span className={arduino.online ? "On" : "Off"}>{arduino.online ? "Online" : "Offline"}</span>
+                <Icon link name="play" style={{ marginLeft: '1em' }} onClick={() => SystemAPI.connectArduino()} />
+                <Icon link name="x" style={{ marginLeft: '1em' }} onClick={() => SystemAPI.disconnectArduino()} />
+                <Icon link name="redo" style={{ marginLeft: '1.5em' }} onClick={() => SystemAPI.reconnectArduino()}/>
+              </List.Content>
             </List.Item>
           </List>
           <Divider horizontal>
