@@ -11,13 +11,12 @@ class Home extends Component {
         <h1><Greeting /></h1>
         <Divider hidden/>
         <Divider horizontal>
-          <Header as='h4'>
+          <Header as='h2'>
             <Icon name='home' />
             Your home
           </Header>
         </Divider>
         <RoomData name="Antoine's room"/>
-        <Divider hidden/>
       </div>
     );
   }

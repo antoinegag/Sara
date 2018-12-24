@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SensorAPI from "../api/sensors/SensorAPI";
+import SensorAPI from "../../api/sensors/SensorAPI";
 
 export default class Temperature extends Component {
   constructor(props) {
