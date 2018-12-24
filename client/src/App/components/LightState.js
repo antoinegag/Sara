@@ -1,35 +1,36 @@
 import React, { Component } from "react";
 import SensorAPI from "../api/sensors/SensorAPI";
 
-export default class Temperature extends Component {
+export default class LightState extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       error: null,
       isLoaded: false,
-      temperature: null,
+      level: null,
     };
   }
 
   async componentDidMount() {
-    let temp = await SensorAPI.getTemperature();
+    let level = await SensorAPI.getLightLevel();
     this.setState({
       isLoaded: true,
-      temperature: temp
+      level: level
     });
   }
 
   render() {
-    const { error, isLoaded, temperature } = this.state;
+    const { error, isLoaded, level } = this.state;
+    const state = (level < 20 ? "Off" : "On")
     if (error) {
       return <span>Error: {error.message}</span>;
     } else if (!isLoaded) {
       return <span>...</span>;
     } else {
       return (
-        <span>
-          {temperature}	&#8451;
+        <span className={state}>
+          {state}
         </span>
       );
     }

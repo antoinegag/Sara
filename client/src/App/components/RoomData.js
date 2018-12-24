@@ -1,6 +1,8 @@
 import React from 'react';
-import { Icon, Divider } from 'semantic-ui-react';
+import { Icon, Divider, List } from 'semantic-ui-react';
 import Temperature from './Temperature';
+import LightState from './LightState';
+import LightAPI from '../api/lights/LightAPI';
 
 export default function RoomData(props) {
   let title = props.name || "Unnamed room";
@@ -8,7 +10,17 @@ export default function RoomData(props) {
     <span>
       <h1>{title}</h1>
       <Divider />
-      <Icon name="thermometer" /><Temperature />
+      <List>
+        <List.Item>
+          <List.Icon name="thermometer" />
+          <List.Content><Temperature /></List.Content>
+        </List.Item>
+        <List.Item>
+          <List.Icon name="lightbulb" />
+          <List.Content><LightState /></List.Content>
+        </List.Item>
+      </List>
+
     </span>
   )
 }
