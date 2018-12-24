@@ -1,8 +1,7 @@
 import React from 'react';
-import { Icon, Divider, List } from 'semantic-ui-react';
-import Temperature from './Temperature';
-import LightState from './LightState';
-import LightAPI from '../api/lights/LightAPI';
+import { Divider, List } from 'semantic-ui-react';
+import Temperature from './sensor/Temperature';
+import LightState from './sensor/LightState';
 
 export default function RoomData(props) {
   let title = props.name || "Unnamed room";

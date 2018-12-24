@@ -13,7 +13,7 @@ class Home extends Component {
         <Divider horizontal>
           <Header as='h4'>
             <Icon name='home' />
-            Your house
+            Your home
           </Header>
         </Divider>
         <RoomData name="Antoine's room"/>
