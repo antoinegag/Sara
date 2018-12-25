@@ -22,7 +22,7 @@ export default class LightState extends Component {
 
   render() {
     const { error, isLoaded, level } = this.state;
-    const state = (level < 20 ? "Off" : "On")
+    const state = (level < 5 ? "Off" : "On")
     if (error) {
       return <span>Error: {error.message}</span>;
     } else if (!isLoaded) {
