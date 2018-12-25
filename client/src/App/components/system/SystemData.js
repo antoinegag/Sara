@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import SystemAPI from "../../api/system/SystemAPI";
-import { List, Divider, Icon, Header } from "semantic-ui-react"
 import Arduino from "./Arduino";
 import Server from "./Server";
 import Process from "./Process";
@@ -32,7 +31,6 @@ export default class SystemData extends Component {
     } else if (!isLoaded) {
       return <span>Loading system data...</span>;
     } else {
-      //TODO: split that stuff into multiple components
       let { arduino, server, process, database } = data;
       return (
         <div>
