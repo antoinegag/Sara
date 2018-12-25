@@ -16,7 +16,7 @@ class Home extends Component {
             Your home
           </Header>
         </Divider>
-        <RoomData name="Antoine's room"/>
+        <RoomData name="Your room"/>
       </div>
     );
   }
