@@ -8,6 +8,7 @@ module.exports = {
   COLOR_CYCLE: 'C',
 
   // Sensor data
+  GET_ALL: 'A',
   GET_TEMP: 'T',
   GET_LIGHT_LEVEL: 'L',
 };
