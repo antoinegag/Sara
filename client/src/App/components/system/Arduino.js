@@ -47,7 +47,7 @@ export default class Arduino extends Component {
             <List.Icon name="power" />
             <List.Content>
               <span className={arduino.online ? "On" : "Off"}>{arduino.online ? "Online" : "Offline"}</span>
-              <Icon link name="play" style={{ marginLeft: '1em' }} onClick={this.open} />
+              <Icon link name="play" style={{ marginLeft: '1em' }} onClick={SystemAPI.connectArduino} />
               <Icon link name="x" style={{ marginLeft: '1em' }} onClick={this.confirmDisconnect} />
               <Icon link name="redo" style={{ marginLeft: '1em' }} onClick={this.confirmReconnect} />
             </List.Content>
