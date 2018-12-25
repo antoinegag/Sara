@@ -1,38 +1,11 @@
-import React, { Component } from "react";
-import SensorAPI from "../../api/sensors/SensorAPI";
+import React from "react";
 
-export default class LightState extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      error: null,
-      isLoaded: false,
-      level: null,
-    };
-  }
-
-  async componentDidMount() {
-    let level = await SensorAPI.getLightLevel();
-    this.setState({
-      isLoaded: true,
-      level: level
-    });
-  }
-
-  render() {
-    const { error, isLoaded, level } = this.state;
-    const state = (level < 5 ? "Off" : "On")
-    if (error) {
-      return <span>Error: {error.message}</span>;
-    } else if (!isLoaded) {
-      return <span>...</span>;
-    } else {
-      return (
-        <span className={state}>
-          {state}
-        </span>
-      );
-    }
-  }
-}
+export default function LightState(props) {
+  const value = props.value
+  const state = (value < 5 ? "Off" : "On")
+  return (
+    <span className={state}>
+      {state}
+    </span>
+  );
+};

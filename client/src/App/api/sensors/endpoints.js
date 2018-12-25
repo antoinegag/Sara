@@ -1,4 +1,5 @@
 export default {
   TEMPERATURE: `sensors/temperature`,
-  LIGHT: `sensors/light`
+  LIGHT: `sensors/light`,
+  ALL: `sensors/`
 }
