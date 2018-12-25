@@ -28,7 +28,7 @@ export default class RoomData extends Component {
   render() {
     const { isLoaded, error, sensorData } = this.state;
 
-    if (!isLoaded) return (<span><Loader /></span>);
+    if (!isLoaded) return (<span><Loader active inline='centered'/></span>);
     if (error) return (<span>Error: {error}</span>);
 
     const { light_level, temperature } = sensorData;
