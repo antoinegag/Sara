@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SystemAPI from "../../api/system/SystemAPI";
+import { Loader } from 'semantic-ui-react';
 import Arduino from "./Arduino";
 import Server from "./Server";
 import Process from "./Process";
@@ -29,7 +30,7 @@ export default class SystemData extends Component {
     if (error) {
       return <span>Error: {error.message}</span>;
     } else if (!isLoaded) {
-      return <span>Loading system data...</span>;
+      return <span><Loader active inline='centered'/></span>;
     } else {
       let { arduino, server, process, database } = data;
       return (
