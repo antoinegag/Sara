@@ -9,7 +9,15 @@ import Dashboard from './pages/Dashboard';
 import Footer from './components/nav/Footer';
 
 class App extends Component {
+
+  componentDidMount() {
+    if(process.env.NODE_ENV === "development") {
+      document.title = "Sara (Dev)"
+    }
+  }
+
   render() {
+    console.log(process.env);
     const App = () => (
       <span className='Site'>
         <NavBar />
