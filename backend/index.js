@@ -1,5 +1,7 @@
 require('dotenv').config({path: __dirname + '/.env'});
 
+require('./lib/configUtil').checkConfig();
+
 const serial = require('./arduino/serial'); // Load the serial module
 const db = require('./pg'); // Etablish database connection
 const discord = require('./discord/bot');
