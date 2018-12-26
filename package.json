@@ -18,6 +18,7 @@
     "migrateProd": "cd backend && db-migrate up -e prod",
     "setupDev": "npm install && npm run installBackendDep && npm run migrateDev && npm run installClientDep",
     "upgrade": "git pull && npm run stopPM2 && npm run installBackendDep && npm run migrateProd && npm run installClientDep && npm run buildClient && npm run restartPM2",
+    "upgrade_server": "git pull && npm run stopPM2 && npm run installBackendDep && npm run migrateProd && npm run restartPM2",
     "deploy": "git pull && npm run migrateProd && npm run installBackendDep && npm run installClientDep && npm run buildClient && npm run createPM2"
   },
   "repository": {
