@@ -11,12 +11,13 @@
     "installBackendDep": "cd backend && npm install",
     "installClientDep": "cd client && npm install",
     "buildClient": "cd client && npm run build",
+    "stopPM2": "pm2 stop sara",
     "createPM2": "pm2 start ecosystem.config.js --env production -f",
     "restartPM2": "pm2 restart ecosystem.config.js --env production",
     "migrateDev": "cd backend && db-migrate up -e dev",
     "migrateProd": "cd backend && db-migrate up -e prod",
     "setupDev": "npm install && npm run installBackendDep && npm run migrateDev && npm run installClientDep",
-    "upgrade": "git pull && npm run installBackendDep && npm run migrateProd && npm run installClientDep && npm run buildClient && npm run restartPM2",
+    "upgrade": "git pull && npm run stopPM2 && npm run installBackendDep && npm run migrateProd && npm run installClientDep && npm run buildClient && npm run restartPM2",
     "deploy": "git pull && npm run migrateProd && npm run installBackendDep && npm run installClientDep && npm run buildClient && npm run createPM2"
   },
   "repository": {
