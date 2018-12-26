@@ -1,10 +1,10 @@
 require('dotenv').config({path: __dirname + '/.env'});
 
 require('./lib/configUtil').checkConfig();
+const discord = require('./discord/bot');
 
 const serial = require('./arduino/serial'); // Load the serial module
 const db = require('./pg'); // Etablish database connection
-const discord = require('./discord/bot');
 
 const express = require('express');
 const bodyParser = require('body-parser');

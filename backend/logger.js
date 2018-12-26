@@ -2,7 +2,7 @@ const {RichEmbed} = require('discord.js');
 
 const config = require('./config.json');
 const discordConfig = config.discord;
-const enabled = discordConfig.logs.enable;
+const enabled = discordConfig.logs.enabled;
 const errorChannelId = discordConfig.logs.error;
 const infoChannelId = discordConfig.logs.info;
 const warnChannelId = discordConfig.logs.warning;
