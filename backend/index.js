@@ -6,6 +6,9 @@ const discord = require('./discord/bot');
 const serial = require('./arduino/serial'); // Load the serial module
 const db = require('./pg'); // Etablish database connection
 
+const sampler = require('./historic/sampler');
+sampler.scheduleSampling();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
