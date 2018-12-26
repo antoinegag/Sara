@@ -17,7 +17,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(process.env);
     const App = () => (
       <span className='Site'>
         <NavBar />

@@ -10,12 +10,6 @@ class Home extends Component {
       <div>
         <h1><Greeting /></h1>
         <Divider hidden/>
-        <Divider horizontal>
-          <Header as='h2'>
-            <Icon name='home' />
-            Your home
-          </Header>
-        </Divider>
         <RoomData name="Your room"/>
       </div>
     );
