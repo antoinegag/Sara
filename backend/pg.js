@@ -1,4 +1,5 @@
 const promise = require('bluebird');
+const logger = require('./logger');
 
 const options = {
   promiseLib: promise,
@@ -6,7 +7,7 @@ const options = {
 
 const pgp = require('pg-promise')(options);
 
-console.log(`Connecting to database with user: ${process.env.DB_USERNAME}`);
+logger.info(`Connecting to database`, `User: ${process.env.DB_USERNAME}`);
 
 const db = pgp({
   host: process.env.DB_HOST,

@@ -1,10 +1,10 @@
 const SerialPort = require('serialport');
 const Delimiter = require('@serialport/parser-delimiter');
+const logger = require('../logger');
 
 const address = process.env.ARDUINO_PORT || '/dev/ttyUSB0';
 
 let port = new SerialPort(address);
-console.info(`Connecting to arduino @ ${address}`);
 
 let parser = port.pipe(new Delimiter({delimiter: '\r\n'}));
 let ready = false;
@@ -39,15 +39,15 @@ function parserHandler() {
         queue.shift();
         processNext();
       } else {
-        console.warn(`${new Date()} - Got unexpected data: ${string} (ignored)`);
+        logger.warn(`Got unexpected data`, `Data: ${string}`);
       }
     } else {
       if (string == 'READY') {
         ready = true;
-        console.info(`Arduino @ ${address} ready`);
+        logger.info('Arduino ready', `Port: ${address}`);
         processNext();
       } else {
-        console.warn(`Received data "${string}" but Arduino is not ready`);
+        logger.warn('Received data but Arduino was not ready', `Data: ${string}`);
       }
     }
   });
@@ -56,18 +56,16 @@ function parserHandler() {
  * Handle serial port related errors
  */
   port.on('error', (err) => {
-    console.error('Serial port error');
-    console.error(`Error: ${err}`);
-  // process.exit(1); //TODO: Properly handle errors
+    logger.error('Serial port error', err);
   });
 
   port.on('close', (data) => {
     ready = false;
-    console.info(`Disconnected from ${address}`);
+    logger.info(`Disconnected from serial port`, `Port: ${address}`);
   });
 
   port.on('open', (data) => {
-    console.info(`Opened ${address}`);
+    logger.info(`Opened serial port`, `Port: ${address}`);
   });
 };
 
@@ -102,7 +100,6 @@ function connect() {
   ready = false;
   waitingForData = false;
   port = new SerialPort(address);
-  console.info(`Connecting to arduino @ ${address}`);
   parser.removeAllListeners();
   parser = port.pipe(new Delimiter({delimiter: '\r\n'}));
   parserHandler();
