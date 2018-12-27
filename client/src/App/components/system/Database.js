@@ -18,6 +18,10 @@ export default class Database extends Component {
             <List.Content className={database.online ? "On" : "Off"}>{database.online ? "Online" : "Offline"}</List.Content>
           </List.Item>
           <List.Item>
+            <List.Icon name="hdd" />
+            <List.Content>Size: {database.size}</List.Content>
+          </List.Item>
+          <List.Item>
             <List.Icon name="archive" />
             <List.Content>{database.version}</List.Content>
           </List.Item>

@@ -6,8 +6,6 @@ const system = require('../../lib/system');
 const database = require('../../lib/database');
 
 router.get('/', async (req, res) => {
-  const databaseStatus = await database.getStatus();
-
   return res.json(
       {
         arduino: {
@@ -15,7 +13,7 @@ router.get('/', async (req, res) => {
         },
         server: system.getServerInfo(),
         process: system.getProcessInfo(),
-        database: databaseStatus,
+        database: await database.getInfo(),
       }
   );
 });
