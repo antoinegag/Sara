@@ -1,6 +1,5 @@
 const schedule = require('node-schedule');
 const db = require('../pg');
-const serial = require('../arduino/serial');
 const temperature = require('../arduino/sensors/atmospheric/temperature');
 const logger = require('../logger');
 
