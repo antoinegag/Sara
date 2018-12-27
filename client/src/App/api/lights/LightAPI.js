@@ -3,7 +3,6 @@ import APIRequestHandler from "../APIRequestHandler";
 
 export default class LightAPI {
   static setWhite() {
-    console.log(endpoints.COLOR_WHITE);
     APIRequestHandler.query(endpoints.COLOR_WHITE);
   }
 

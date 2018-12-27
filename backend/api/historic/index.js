@@ -4,11 +4,11 @@ const router = express.Router();
 const history = require('../../historic/history');
 
 router.get('/temperature', async (req, res) => {
-  return res.json(await history.fetchAllTemperatureHistory(req.query.unix));
+  return res.json(await history.fetchAllTemperatureHistory(true));
 });
 
 router.get('/temperature/24', async (req, res) => {
-  return res.json(await history.fetchLastDayTemperatureHistory(req.query.unix));
+  return res.json(await history.fetchLastDayTemperatureHistory(true));
 });
 
 module.exports = router;

@@ -5,6 +5,7 @@ import LightState from './sensor/LightState';
 
 import SensorAPI from '../api/sensors/SensorAPI';
 import TemperatureGraph from './historic/TemperatureGraph';
+import HistoricAPI from '../api/historic/HistoricAPI';
 
 export default class RoomData extends Component {
 
@@ -15,19 +16,25 @@ export default class RoomData extends Component {
       error: null,
       isLoaded: false,
       sensorData: null,
+      historic: null,
     };
   }
 
   async componentDidMount() {
-    let data = await SensorAPI.getAll();
-    this.setState({
-      isLoaded: true,
-      sensorData: data
+    Promise.all([
+        SensorAPI.getAll().then((data) => {
+          this.setState({sensorData: data});
+        }),
+        HistoricAPI.getLastDayTemperatureHistory(true).then((data) => {
+          this.setState({historic: data})
+        })
+    ]).then(() => {
+      this.setState({isLoaded: true});
     });
   }
 
   render() {
-    const { isLoaded, error, sensorData } = this.state;
+    const { isLoaded, error, sensorData, historic } = this.state;
 
     if (!isLoaded) return (<span><Loader active inline='centered' /></span>);
     if (error) return (<span>Error: {error}</span>);
@@ -53,7 +60,7 @@ export default class RoomData extends Component {
             <Icon name='thermometer' /> last 24h
         </Divider>
         </Container>
-        <TemperatureGraph />
+        <TemperatureGraph data={historic}/>
       </div>
     )
   }
