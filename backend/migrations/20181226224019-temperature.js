@@ -23,7 +23,7 @@ exports.up = function (db) {
     },
     time: {
       type: 'timestamp',
-      defaultValue: 'NOW()'
+      defaultValue: new String('CURRENT_TIMESTAMP')
     },
     temperature: {
       type: 'FLOAT',
