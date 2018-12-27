@@ -2,10 +2,11 @@ const db = require('../pg');
 
 /**
  * Fetch all temperature measurments
- * @param {boolean} unix if time should be converted to unix timestamp
+ * @param {boolean} chrono
  * @return {Promise<JSON>}
  */
-function fetchAllTemperatureHistory(unix) {
+function fetchAllTemperatureHistory(chrono) {
+  const unix = false;
   if (unix) {
     return db.any('SELECT EXTRACT(epoch FROM time) AS time, temperature FROM temperature');
   } else {
@@ -15,11 +16,11 @@ function fetchAllTemperatureHistory(unix) {
 
 /**
  * Fetch all temperature measurments done in the last 24 hours
- * @param {boolean} unix if time should be converted to unix timestamp
  * @param {boolean} chrono if data should be sorted by chronological order
  * @return {Promise<JSON>}
  */
-function fetchLastDayTemperatureHistory(unix, chrono) {
+function fetchLastDayTemperatureHistory(chrono) {
+  const unix = false;
   if (unix) {
     return db.manyOrNone('SELECT EXTRACT(epoch FROM time) AS time, temperature FROM temperature WHERE time >= NOW() - \'1 day\'::INTERVAL' + (chrono ? ' ORDER BY time ASC':''));
   } else {
