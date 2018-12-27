@@ -27,9 +27,7 @@ export default function TemperatureGraph(props) {
   props.data.forEach(element => {
     points.push([new Date(element.time).getTime() , element.temperature])
   });
-
-  console.log(points);
-
+  
   const data = {
     name: "temperature",
     columns: ["time", "value"],
