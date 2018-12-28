@@ -48,7 +48,6 @@ export default function TemperatureGraph(props) {
               max={series.max()}
               width="30"
               type="linear"
-              format=","
             />
             <Charts>
               <LineChart axis="axis1" series={series} columns={["value"]} style={style} />
