@@ -46,7 +46,7 @@ export default function TemperatureGraph(props) {
               label="Temperature (C)"
               min={series.min()}
               max={series.max()}
-              width="20"
+              width="30"
               type="linear"
               format=","
             />
