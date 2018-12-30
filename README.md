@@ -12,6 +12,8 @@ Sara is a system that I use to control and monitor my room. At the moment it onl
 
 I plan on adding a lot more features as time goes on.
 
+**[Live demo here!](https://streamable.com/bs8f8)**
+
 <img src="doc/assets/dashboard-m.jpg" width="30%"> <img src="doc/assets/home-m-1.png" width="30%"> <img src="doc/assets/remote-m.png" width="30%">
 
 ## Warning
