@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Icon } from "semantic-ui-react"
 
 import LightAPI from "../api/lights/LightAPI";
+import APIRequestHandler from "../api/APIRequestHandler";
 
 class Remote extends Component {
   render() {
@@ -21,6 +22,9 @@ class Remote extends Component {
         </Button>
         <Button attached="bottom" icon onClick={() => {LightAPI.cycleColor()}}>
             Color
+        </Button>
+        <Button attached="bottom" icon onClick={() => {APIRequestHandler.query('preset/sleep')}}>
+          <Icon name='moon' />
         </Button> 
       </div>
     );
