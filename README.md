@@ -4,19 +4,25 @@
 **S**mart **A**ssistant and **R**oom **A**utomation
 
 ## What is Sara?
-Sara is a system that I use to control and monitor my room. At the moment it only has an handful of features such as
+Sara is a lightweight, open-source and configurable control and monitoring system for your room.
 
+At the moment it has a few features such as
 * Light control
 * Temperature monitoring
 * Light level monitoring
 
-I plan on adding a lot more features as time goes on.
+My plan is to make Sara easily usable for a variety of connect things like the Google or Amazon assistant lineup.
 
 ## [Demo video (Click me!)](https://streamable.com/bs8f8)
 
 ## Screenshots
 
 <img src="doc/assets/dashboard-m.jpg" width="30%"> <img src="doc/assets/home-m-1.png" width="30%"> <img src="doc/assets/remote-m.png" width="30%">
+
+# Table of content
+- [Technologies](#technologies)
+- [Using Sara](#using-sara)
+- [License](#license)
 
 # Technologies
 This project uses multiple technologies centered around the web.
