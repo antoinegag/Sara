@@ -11,7 +11,7 @@ At the moment it has a few features such as
 * Temperature monitoring
 * Light level monitoring
 
-My plan is to make Sara easily usable for a variety of connect things like the Google or Amazon assistant lineup.
+My plan is to make Sara easily usable for a variety of internet enabled smart devices such as smart lights, fridges, Google Home, Alexa, etc.
 
 ## [Demo video (Click me!)](https://streamable.com/bs8f8)
 
