@@ -39,4 +39,25 @@ router.get("/weather", async (req, res) => {
   }
 });
 
+router.get("/", async (req, res) => {
+  try {
+    const weather = await getCityWeather();
+    const tasks = await getTodayCards();
+
+    return res.json({
+      success: true,
+      data: { weather: weather, tasks: tasks },
+    } as APIResponse);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      success: false,
+      error: {
+        id: "INTERNAL_SERVER_ERROR",
+        message: "Something went wrong fetching today's information",
+      },
+    } as APIResponse);
+  }
+});
+
 export default router;
