@@ -1,24 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from "react";
+import { TrelloCard, WeatherData } from "./api/ResponseTypes";
+import { getTodaysInfo } from "./api/today";
 
 function App() {
+  const [today, setToday] = useState<{
+    weather: WeatherData;
+    tasks: TrelloCard[];
+  }>();
 
   useEffect(() => {
     async function toggle() {
-      fetch("http://10.0.0.90:3000/lights/", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify({ action: "TOGGLE" })
-      })
+      const data = await getTodaysInfo();
+      setToday(data);
     }
 
     toggle();
-  })
+  });
 
   return (
     <div>
-      Hello, world!
+      <pre>{JSON.stringify(today, null, 2)}</pre>
     </div>
   );
 }
