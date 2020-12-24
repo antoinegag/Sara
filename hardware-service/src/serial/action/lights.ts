@@ -1,0 +1,7 @@
+export default {
+  TOGGLE: "O",
+  INCREASE_BRIGHTNESS: "I",
+  DECREASE_BRIGHTNESS: "D",
+  COLOR_WHITE: "W",
+  COLOR_CYCLE: "C",
+};
