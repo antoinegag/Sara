@@ -13,7 +13,6 @@ function App() {
     async function toggle() {
       const data = await getTodaysInfo();
       setToday(data);
-      toggleLights();
     }
 
     toggle();
@@ -21,7 +20,7 @@ function App() {
 
   return (
     <div>
-      <button onClick={() => toggleLights()}>TOGGLE</button>
+      <button onClick={() => toggleLights()} className="bg-red-500">TOGGLE</button>
       <pre>{JSON.stringify(today, null, 2)}</pre>
     </div>
   );
