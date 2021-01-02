@@ -2,7 +2,6 @@ import APIResponse from "./APIResponse";
 import { TrelloCard, WeatherData } from "./ResponseTypes";
 
 const HOST = process.env.REACT_APP_SERVER_HOST;
-console.log(HOST);
 
 export async function getTodaysInfo() {
   const res = await fetch(`${HOST}/today`);
