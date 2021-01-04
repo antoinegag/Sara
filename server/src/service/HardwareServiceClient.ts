@@ -31,22 +31,22 @@ async function postAction(endpoint: string, action: string) {
   return json.success;
 }
 
-export async function toggleLights() {
+export async function toggleLEDs() {
   return postAction("/lights", LightActions.TOGGLE);
 }
 
-export async function increaseBrightness() {
+export async function increaseLEDBrightness() {
   return postAction("/lights", LightActions.INCREASE_BRIGHTNESS);
 }
 
-export async function decreaseBrightness() {
+export async function decreaseLEDBrightness() {
   return postAction("/lights", LightActions.DECREASE_BRIGHTNESS);
 }
 
-export async function setColorWhite() {
+export async function setLEDColorWhite() {
   return postAction("/lights", LightActions.COLOR_WHITE);
 }
 
-export async function cycleColor() {
+export async function cycleLEDColor() {
   return postAction("/lights", LightActions.COLOR_CYCLE);
 }

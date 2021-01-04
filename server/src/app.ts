@@ -1,4 +1,5 @@
 import { config } from "dotenv";
+import TuyaClient from "./service/TuyaAPIClient";
 config();
 
 import express from "express";
@@ -17,3 +18,5 @@ app.use(APIRouter);
 app.listen(port, () => {
   return console.log(`Server is listening on ${port}`);
 });
+
+TuyaClient.init(process.env.TUYA_ID || "", process.env.TUYA_KEY || "");
