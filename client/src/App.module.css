@@ -1,4 +1,11 @@
 .App {
-  background: linear-gradient(-45deg, hsl(196, 40%, 91%), hsl(196, 21%, 97%));
-  @apply min-h-screen;
+  @apply min-h-screen lg:p-10 xl:p-12 bg-gray-900 text-gray-200;
+}
+
+.clock {
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: white;
+
+  @apply text-8xl font-bold mb-5;
 }

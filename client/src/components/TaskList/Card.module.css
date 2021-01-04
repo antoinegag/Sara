@@ -1,0 +1,6 @@
+.card {
+  border-image-source: linear-gradient(45deg, #f59e0b, rgb(250, 224, 66));
+  border-image-slice: 1;
+
+  @apply mb-5 p-5 border-l;
+}
