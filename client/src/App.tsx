@@ -27,6 +27,7 @@ function App() {
       <div className="flex justify-between">
         <div>
           <Clock className={styles.clock} />
+          <hr className="border-gray-700 my-5" />
         </div>
         <div>{today && <Weather weather={today.weather} />}</div>
       </div>

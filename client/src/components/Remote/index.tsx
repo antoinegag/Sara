@@ -56,6 +56,7 @@ const Remote = () => {
           }}
         />
       </div>
+      <hr className="border-gray-700 my-5" />
       <div>
         <div className="text-orange text-3xl font-semibold mb-5">LEDs</div>
         <div className="flex justify-center">
